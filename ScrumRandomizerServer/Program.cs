@@ -19,9 +19,9 @@ namespace ScrumRandomizerServer
                 .Build();
             Log.Logger = Core.Logging.LoggerFactory.Create(Configuration);
 
-            CreateHostBuilder(args)
+            await CreateHostBuilder(args)
                 .Build()
-                .Run();
+                .RunAsync();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
