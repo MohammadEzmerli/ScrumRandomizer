@@ -14,7 +14,7 @@ namespace ScrumRandomizerServer.Core.ServiceFactory
             if (typeof(T) == typeof(IUserService))
                 return (T)(new UserService(serviceProvider) as IUserService);
             if (typeof(T) == typeof(IRandomizerService))
-                return (T)(new RandomizerService(serviceProvider) as IRandomizerService);
+                return (T)(new RandomizerService() as IRandomizerService);
             else
                 throw new NotImplementedException($"Service of type '{typeof(T)}' is not yet implemented!");
         }
