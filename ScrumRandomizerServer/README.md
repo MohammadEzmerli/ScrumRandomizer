@@ -1,2 +1,0 @@
-# ScrumRandomizerServer
- ScrumRandomizerServer
