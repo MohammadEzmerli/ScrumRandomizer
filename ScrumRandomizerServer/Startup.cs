@@ -1,9 +1,11 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
+using ScrumRandomizerServer.Core.AutoMapper;
 using ScrumRandomizerServer.Core.Logging;
 using ScrumRandomizerServer.Core.RepositoryFactory;
 using ScrumRandomizerServer.Core.ServiceFactory;
@@ -31,6 +33,11 @@ namespace ScrumRandomizerServer
             services.AddHealthChecks()
                     .AddAsyncCheck("health", () => Task.FromResult(new HealthCheckResult(HealthStatus.Healthy)));
 
+            services.AddSingleton(new MapperConfiguration(config =>
+            {
+                config.AddProfile(new MappingProfile());
+            }).CreateMapper());
+
             // repositories
             services.AddScoped((serviceProvider) => RepositoryFactory.CreateRepository<IMongoDbFactory>(serviceProvider));
             services.AddScoped((serviceProvider) => RepositoryFactory.CreateRepository<ILogRepository>(serviceProvider));
@@ -52,7 +59,6 @@ namespace ScrumRandomizerServer
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
-
             app.UseStaticFiles();
             app.UseRouting();
 
