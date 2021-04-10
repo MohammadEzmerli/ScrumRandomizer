@@ -9,6 +9,7 @@ namespace ScrumRandomizerServer.Core.Logging
     public class LogService : ILogService
     {
         private readonly ILogRepository _logRepository;
+
         public LogService(IServiceProvider serviceProvider)
         {
             _logRepository = (ILogRepository)serviceProvider.GetService(typeof(ILogRepository));
