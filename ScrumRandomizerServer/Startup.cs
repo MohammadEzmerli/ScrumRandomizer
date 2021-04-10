@@ -7,6 +7,7 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
 using ScrumRandomizerServer.Core.AutoMapper;
 using ScrumRandomizerServer.Core.Logging;
+using ScrumRandomizerServer.Core.Randomization;
 using ScrumRandomizerServer.Core.RepositoryFactory;
 using ScrumRandomizerServer.Core.ServiceFactory;
 using ScrumRandomizerServer.Core.Users;
@@ -46,6 +47,7 @@ namespace ScrumRandomizerServer
             // services
             services.AddScoped((serviceProvider) => ServiceFactory.CreateService<ILogService>(serviceProvider));
             services.AddScoped((serviceProvider) => ServiceFactory.CreateService<IUserService>(serviceProvider));
+            services.AddScoped((serviceProvider) => ServiceFactory.CreateService<IRandomizerService>(serviceProvider));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
