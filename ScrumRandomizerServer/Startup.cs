@@ -14,6 +14,7 @@ using ScrumRandomizerServer.Core.Users;
 using ScrumRandomizerServer.Data.DbFactory;
 using ScrumRandomizerServer.Data.Logging;
 using ScrumRandomizerServer.Data.Users;
+using Serilog;
 using System.Threading.Tasks; 
 
 namespace ScrumRandomizerServer
@@ -48,6 +49,8 @@ namespace ScrumRandomizerServer
             services.AddScoped((serviceProvider) => ServiceFactory.CreateService<ILogService>(serviceProvider));
             services.AddScoped((serviceProvider) => ServiceFactory.CreateService<IUserService>(serviceProvider));
             services.AddScoped((serviceProvider) => ServiceFactory.CreateService<IRandomizerService>(serviceProvider));
+
+            Log.Information("Startup done!");
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

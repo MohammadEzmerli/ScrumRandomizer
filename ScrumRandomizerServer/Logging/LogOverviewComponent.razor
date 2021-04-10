@@ -1,0 +1,17 @@
+﻿@inject ILogService LogService
+
+@foreach (var logEntry in Logs)
+{
+    <table>
+        <LogComponent LogEntry="@logEntry" />
+    </table>
+}
+
+@code {
+    private List<ILogEntry> Logs { get; set; } = new List<ILogEntry>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        Logs = await LogService.GetAll();
+    }
+}

@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScrumRandomizerServer", "Sc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScrumRandomizerServer.Core", "..\ScrumRandomizerServer.Core\ScrumRandomizerServer.Core.csproj", "{4CB780CF-ED31-47BF-9A80-5F4706230413}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScrumRandomizerServer.Data", "..\ScrumRandomizerServer.Data\ScrumRandomizerServer.Data.csproj", "{D81A926D-3837-4A09-902C-086C57356031}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScrumRandomizerServer.Data", "..\ScrumRandomizerServer.Data\ScrumRandomizerServer.Data.csproj", "{D81A926D-3837-4A09-902C-086C57356031}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
