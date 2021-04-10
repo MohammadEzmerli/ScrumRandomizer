@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace ScrumRandomizerServer.Data.Logging
 {
-    public class LogRepository : ILogRepository
+    public class MongoLogRepository : ILogRepository
     {
         private readonly IMongoCollection<MongoLogEntry> _logEntries;
 
-        public LogRepository(IServiceProvider serviceProvider)
+        public MongoLogRepository(IServiceProvider serviceProvider)
         {
             _logEntries = ((IMongoDbFactory)serviceProvider.GetService(typeof(IMongoDbFactory))).GetCollection<MongoLogEntry>();
         }

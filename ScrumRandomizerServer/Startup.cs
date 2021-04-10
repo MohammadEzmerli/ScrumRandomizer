@@ -8,6 +8,7 @@ using ScrumRandomizerServer.Core.RepositoryFactory;
 using ScrumRandomizerServer.Core.ServiceFactory;
 using ScrumRandomizerServer.Data.DbFactory;
 using ScrumRandomizerServer.Data.Logging;
+using ScrumRandomizerServer.Data.Users;
 
 namespace ScrumRandomizerServer
 {
@@ -26,11 +27,12 @@ namespace ScrumRandomizerServer
             services.AddServerSideBlazor();
 
             // repositories
-            services.AddTransient((serviceProvider) => RepositoryFactory.CreateRepository<IMongoDbFactory>(serviceProvider));
-            services.AddTransient((serviceProvider) => RepositoryFactory.CreateRepository<ILogRepository>(serviceProvider));
+            services.AddScoped((serviceProvider) => RepositoryFactory.CreateRepository<IMongoDbFactory>(serviceProvider));
+            services.AddScoped((serviceProvider) => RepositoryFactory.CreateRepository<ILogRepository>(serviceProvider));
+            services.AddScoped((serviceProvider) => RepositoryFactory.CreateRepository<IUserRepository>(serviceProvider));
 
             // services
-            services.AddTransient((serviceProvider) => ServiceFactory.CreateService<ILogService>(serviceProvider));
+            services.AddScoped((serviceProvider) => ServiceFactory.CreateService<ILogService>(serviceProvider));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
