@@ -1,0 +1,19 @@
+﻿@page "/Users"
+@inject IUserService UserService
+
+@foreach(IUser user in Users)
+{
+     <table style="width:100%" cellpadding="5">
+        <UserComponent User="@user" />
+    </table>
+}
+
+
+@code {
+    private IEnumerable<IUser> Users { get; set; } = new List<IUser>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        Users = await UserService.GetAll();
+    }
+}

@@ -1,14 +1,14 @@
 ﻿@page "/Logs"
 @inject ILogService LogService
-@using System.Linq
 
 
-@foreach (var logEntry in Logs)
+    @foreach (var logEntry in Logs)
 {
     <table style="width:100%" cellpadding="5">
         <LogComponent LogEntry="@logEntry" />
     </table>
 }
+
 
 @code {
     private IEnumerable<ILogEntry> Logs { get; set; } = new List<ILogEntry>();

@@ -49,8 +49,6 @@ namespace ScrumRandomizerServer
             services.AddScoped((serviceProvider) => ServiceFactory.CreateService<ILogService>(serviceProvider));
             services.AddScoped((serviceProvider) => ServiceFactory.CreateService<IUserService>(serviceProvider));
             services.AddScoped((serviceProvider) => ServiceFactory.CreateService<IRandomizerService>(serviceProvider));
-
-            Log.Information("Startup done!");
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

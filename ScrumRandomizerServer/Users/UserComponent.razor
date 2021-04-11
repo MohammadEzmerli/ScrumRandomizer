@@ -1,0 +1,15 @@
+﻿@if (User != null)
+{
+    <tr>
+        <th>Name</th>
+    </tr>
+    <tr>
+        <td>@User.Name</td>
+    </tr>
+}
+
+
+@code {
+    [Parameter]
+    public IUser User { get; set; }
+}
