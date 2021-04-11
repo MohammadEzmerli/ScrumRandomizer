@@ -1,17 +1,20 @@
-﻿@inject ILogService LogService
+﻿@page "/Logs"
+@inject ILogService LogService
+@using System.Linq
+
 
 @foreach (var logEntry in Logs)
 {
-    <table>
+    <table style="width:100%" cellpadding="5">
         <LogComponent LogEntry="@logEntry" />
     </table>
 }
 
 @code {
-    private List<ILogEntry> Logs { get; set; } = new List<ILogEntry>();
+    private IEnumerable<ILogEntry> Logs { get; set; } = new List<ILogEntry>();
 
     protected override async Task OnInitializedAsync()
     {
-        Logs = await LogService.GetAll();
+        Logs = (await LogService.GetAll()).TakeLast(10).Reverse();
     }
 }
