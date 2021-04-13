@@ -1,12 +1,14 @@
 ﻿@inject IUserService UserService
 
 <h3>AddUserComponent</h3>
-<EditForm Model="@User" OnSubmit="@SaveNewUser">
+<EditForm Model="@User" OnValidSubmit="@SaveNewUser">
+    <DataAnnotationsValidator />
+    <Blazorise.ValidationSummary />
     <InputText @bind-Value="User.Name" />
     <br />
     <label>Name</label>
     <br />
-    <button @onclick="@SaveNewUser" >Save to Database</button>
+    <button type="submit">Save To Database</button>
 </EditForm>
 
 
