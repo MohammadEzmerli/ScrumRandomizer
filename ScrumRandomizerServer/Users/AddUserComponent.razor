@@ -1,0 +1,17 @@
+﻿@inject IUserService UserService
+
+<h3>AddUserComponent</h3>
+<EditForm Model="@User" OnSubmit="@SaveNewUser">
+    <InputText @bind-Value="User.Name" />
+    <label>Name</label>
+</EditForm>
+
+
+@code {
+    private IUser User { get; set; } = new MongoUser();
+
+    private async Task<IUser> SaveNewUser()
+    {
+        return await UserService.Create(User);
+    }
+}

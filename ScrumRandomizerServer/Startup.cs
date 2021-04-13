@@ -1,4 +1,7 @@
 using AutoMapper;
+using Blazorise;
+using Blazorise.Bootstrap;
+using Blazorise.Icons.FontAwesome;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -14,8 +17,7 @@ using ScrumRandomizerServer.Core.Users;
 using ScrumRandomizerServer.Data.DbFactory;
 using ScrumRandomizerServer.Data.Logging;
 using ScrumRandomizerServer.Data.Users;
-using Serilog;
-using System.Threading.Tasks; 
+using System.Threading.Tasks;
 
 namespace ScrumRandomizerServer
 {
@@ -30,6 +32,13 @@ namespace ScrumRandomizerServer
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddBlazorise(options =>
+            {
+                options.ChangeTextOnKeyPress = true;
+            })
+            .AddBootstrapProviders()
+            .AddFontAwesomeIcons();
+
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddHealthChecks()

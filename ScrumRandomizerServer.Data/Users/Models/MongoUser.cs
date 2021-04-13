@@ -11,6 +11,7 @@ namespace ScrumRandomizerServer.Data.Users.Models
         [BsonId(IdGenerator = typeof(GuidGenerator))]
         [BsonRepresentation(BsonType.String)]
         public Guid Id { get; set; } = Guid.Empty;
+
         public string Name { get; set; } = string.Empty;
     }
 }

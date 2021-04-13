@@ -13,14 +13,19 @@ namespace ScrumRandomizerServer.Data.Users
     {
         private readonly IMongoCollection<MongoUser> _users;
         private readonly IMapper _mapper;
+
         public MongoUserRepository(IServiceProvider serviceProvider)
         {
             _users = ((IMongoDbFactory)serviceProvider.GetService(typeof(IMongoDbFactory))).GetCollection<MongoUser>();
+            _mapper = (IMapper)serviceProvider.GetService(typeof(IMapper));
         }
 
         async Task<IUser> IUserRepository.Create(IUser user)
         {
             var mappedUser = _mapper.Map<MongoUser>(user);
+            if (mappedUser.Id == Guid.Empty)
+                mappedUser.Id = Guid.NewGuid();
+
             await _users.InsertOneAsync(mappedUser);
             return mappedUser;
         }

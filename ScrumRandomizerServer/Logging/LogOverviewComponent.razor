@@ -1,14 +1,27 @@
 ﻿@page "/Logs"
 @inject ILogService LogService
 
+<Table style="width:100%" cellpadding="5">
+    @{
+        int index = 1;
+    }
 
     @foreach (var logEntry in Logs)
-{
-    <table style="width:100%" cellpadding="5">
-        <LogComponent LogEntry="@logEntry" />
-    </table>
-}
-
+    {
+        <TableHeader>
+            <TableRow>
+                <TableHeader>#</TableHeader>
+                <TableHeader>TimeStamp</TableHeader>
+                <TableHeader>Message</TableHeader>
+                <TableHeader>LogLevel</TableHeader>
+            </TableRow>
+        </TableHeader>
+        <TableBody>
+            <LogComponent LogEntry="@logEntry" Row=@index />
+        </TableBody>
+        index++;
+    }
+</Table>
 
 @code {
     private IEnumerable<ILogEntry> Logs { get; set; } = new List<ILogEntry>();

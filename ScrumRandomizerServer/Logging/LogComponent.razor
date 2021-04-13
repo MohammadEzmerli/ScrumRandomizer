@@ -1,19 +1,18 @@
 ﻿@if (LogEntry != null)
 {
-    <tr>
-        <th>TimeStamp</th>
-        <th>Message</th>
-        <th>LogLevel</th>
-    </tr>
-    <tr>
-        <td>@LogEntry.Timestamp.ToLocalTime()</td>
-        <td>@LogEntry.RenderedMessage</td>
-        <td>@LogEntry.Level</td>
-    </tr>
+    <TableRow>
+        <TableRowHeader>@Row</TableRowHeader>
+        <TableRowCell>@LogEntry.Timestamp.ToLocalTime()</TableRowCell>
+        <TableRowCell>@LogEntry.RenderedMessage</TableRowCell>
+        <TableRowCell>@LogEntry.Level</TableRowCell>
+    </TableRow>
 }
 
 
 @code {
     [Parameter]
     public ILogEntry LogEntry { get; set; }
+
+    [Parameter]
+    public int Row { get; set; }
 }
