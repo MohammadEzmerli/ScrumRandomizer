@@ -6,21 +6,14 @@
         int index = 1;
     }
 
-    @foreach (var logEntry in Logs)
-    {
-        <TableHeader>
-            <TableRow>
-                <TableHeader>#</TableHeader>
-                <TableHeader>TimeStamp</TableHeader>
-                <TableHeader>Message</TableHeader>
-                <TableHeader>LogLevel</TableHeader>
-            </TableRow>
-        </TableHeader>
-        <TableBody>
+    <TableBody>
+        @foreach (var logEntry in Logs)
+        {
             <LogComponent LogEntry="@logEntry" Row=@index />
-        </TableBody>
-        index++;
-    }
+            index++;
+        }
+    </TableBody>
+
 </Table>
 
 @code {
