@@ -1,14 +1,23 @@
 ﻿@page "/Users"
 @inject IUserService UserService
 
-@foreach(IUser user in Users)
+@if (Users.Count() > 0)
 {
-     <table style="width:100%" cellpadding="5">
-        <UserComponent User="@user" />
-    </table>
+    foreach (IUser user in Users)
+    {
+        <table style="width:100%" cellpadding="5">
+            <UserComponent User="@user" />
+        </table>
+}
+}
+else
+{
+    <h1>No users found!</h1>
 }
 
-<AddUserComponent/>
+
+
+<AddUserComponent />
 
 
 @code {
