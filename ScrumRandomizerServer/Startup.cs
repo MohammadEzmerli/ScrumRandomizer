@@ -32,10 +32,7 @@ namespace ScrumRandomizerServer
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddBlazorise(options =>
-            {
-                options.ChangeTextOnKeyPress = true;
-            })
+            services.AddBlazorise()
             .AddBootstrapProviders()
             .AddFontAwesomeIcons();
 
